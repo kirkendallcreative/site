@@ -649,10 +649,10 @@ textarea { resize: vertical; min-height: 82px; line-height: 1.7; }
     payload.append('call_date',  dateFmt);
     payload.append('call_time',  selectedTime);
 
-    fetch('send.php', { method: 'POST', body: payload })
+    fetch('https://formspree.io/f/xojkldea', { method: 'POST', body: payload, headers: { 'Accept': 'application/json' } })
       .then(res => res.json())
       .then(data => {
-        if (data.success) {
+        if (data.ok) {
           document.getElementById('progress-section').style.display = 'none';
           document.querySelectorAll('.form-step').forEach(s => s.style.display = 'none');
           document.getElementById('success-details').innerHTML = `
